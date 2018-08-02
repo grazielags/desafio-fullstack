@@ -21,7 +21,7 @@ public class ProcessadorAlertas {
 	private AlertaGateway gateway;
 	
 	public void processa() throws IOException {
-		URL url = new URL("http://selecao-involves.agilepromoter.com/pesquisas");
+		URL url = new URL("https://selecao-involves.agilepromoter.com/pesquisas");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
 		
@@ -71,6 +71,19 @@ public class ProcessadorAlertas {
 					    alerta.setFlTipo(3);
 					    gateway.salvar(alerta);
 					}
+				} else if(resposta.getPergunta().equals("%Share")) {
+					Alerta alerta = new Alerta();
+					Integer margem = Integer.parseInt(resposta.getResposta()) - ps[i].getParticipacao_estipulada();
+					if(margem >= 0) {
+						alerta.setDescricao("Participação superior ao estipulado");
+					} else {
+						alerta.setDescricao("Participação inferior ao estipulado");
+					}
+				    alerta.setMargem(Math.abs(margem));
+				    alerta.setProduto(ps[i].getCategoria());
+				    alerta.setPontoDeVenda(ps[i].getPonto_de_venda());
+				    alerta.setFlTipo(4);
+				    gateway.salvar(alerta);
 				} else {
 					System.out.println("Alerta ainda não implementado!");
 				}

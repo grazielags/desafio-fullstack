@@ -1,0 +1,38 @@
+<div id="main" class="container-fluid" style="margin-top: 50px">
+    <div id="top" class="row">
+        <div class="col-sm-3">
+            <h2>({{qtdAlertas}}) Alertas</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="input-group h2 col-lg-12">
+                <input type="text" [(ngModel)]="searchText" class="form-control input-lg col-lg-12" uppercased placeholder="Pesquisar Itens">
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div id="list" class="row">
+        <div class="table-responsive col-md-12">
+            <table class="table table-striped" cellspacing="0" cellpadding="0" width="80%">
+                <thead>
+                    <tr>
+                        <th>Ponto de Venda</th>
+                        <th>Descrição</th>
+                        <th>Produto</th>
+                        <th>Tipo</th>
+                        <th>Margem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alerta of alertas | searchFilter:searchText | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                        <td>{{alerta.pontoDeVenda}}</td>
+                        <td>{{alerta.descricao}}</td>
+                        <td>{{alerta.produto}}</td>
+                        <td>{{alerta.flTipo}}</td>
+                        <td>{{alerta.margem != null ? alerta.margem : "-"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
