@@ -53,33 +53,16 @@ import 'rxjs/add/observable/from';
   ]
 })
 export class AlertasComponent implements OnInit {
-  @ViewChild('childModal') public childModal: ModalDirective;
   alerta: Alerta;
   @Output() removeAlerta = new EventEmitter();
-  @Output() alertaCreated = new EventEmitter();
   alertas: Alerta[]
   alertasPagina: Alerta[]
   page: number;
   qtdForPage: number;
   qtdAlertas: number;
-  isEdit: boolean;
   searchText: string = "";
 
-  index: number = 0;
-  @ViewChild('modal')
-  modal: any;
-  items: string[] = ['item1', 'item2', 'item3'];
-  selected: string;
-  output: string;
-  selectedAlertaId: number;
-  selectedAlertaLoaded: boolean = false;
-  backdropOptions = [true, false, 'static'];
-  animation: boolean = true;
-  keyboard: boolean = true;
-  backdrop: string | boolean = true;
-
-  constructor(private alertasService: AlertasService,
-              private fb: FormBuilder) {}
+  constructor(private alertasService: AlertasService) {}
 
   ngOnInit() {
     this.qtdForPage = 10;

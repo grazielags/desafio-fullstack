@@ -43,6 +43,9 @@ import { MyCurrencyFormatterDirective } from './my-currency-formatter.directive'
     ModalModule.forRoot()
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt-br'}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    SearchFilterPipe
+  ]
 })
 export class AppModule { }

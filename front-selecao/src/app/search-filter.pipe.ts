@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import {Alerta} from './alertas/alerta/alerta.model';
-import * as moment from 'moment';
 
 @Pipe({
   name: 'searchFilter'
@@ -21,8 +20,8 @@ export class SearchFilterPipe implements PipeTransform {
         return !searchText || search.test(alerta.pontoDeVenda)
         || search.test(alerta.descricao)
         || search.test(alerta.produto)
-        || search.test(alerta.flTipo.toString())
-        || search.test(alerta.margem.toString());
+        || search.test(alerta.flTipo != null ? alerta.flTipo.toString() : "")
+        || search.test(alerta.margem != null ? alerta.margem.toString() : "");
     }
     return true;
   }

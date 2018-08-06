@@ -9,7 +9,7 @@
         "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
         "test": "ng test",
         "pree2e": "webdriver-manager update --standalone false --gecko false",
-        "e2e": "protractor"
+        "e2e": "protractor src/test/protractor.conf.js"
     },
     "private": true,
     "dependencies": {
@@ -35,7 +35,7 @@
         "rxjs": "5.1.0",
         "ts-helpers": "1.1.2",
         "web-animations-js": "^2.2.5",
-        "zone.js": "0.8.4"
+        "zone.js": "0.8.14"
     },
     "devDependencies": {
         "@angular/cli": "1.2.7",
@@ -43,17 +43,21 @@
         "@types/jasmine": "2.5.38",
         "@types/node": "7.0.5",
         "codelyzer": "2.0.0",
-        "jasmine-core": "2.5.2",
+        "jasmine-core": "3.0.0",
         "jasmine-spec-reporter": "3.2.0",
         "karma": "1.4.1",
         "karma-chrome-launcher": "2.0.0",
         "karma-cli": "1.0.1",
+        "karma-coverage-istanbul-reporter": "^2.0.1",
         "karma-jasmine": "1.1.0",
+        "karma-jasmine-html-reporter": "^1.2.0",
         "karma-remap-istanbul": "0.2.2",
         "protractor": "5.1.0",
+        "protractor-jasmine2-screenshot-reporter": "0.4.0",
         "ts-node": "2.1.0",
         "tslint": "4.5.0",
         "typescript": "2.2.0",
-        "webdriver-manager": "10.2.5"
+        "webdriver-manager": "10.2.5",
+        "zone.js": "0.8.14"
     }
 }
